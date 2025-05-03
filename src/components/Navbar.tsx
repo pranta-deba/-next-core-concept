@@ -28,6 +28,9 @@ const Navbar = () => {
           <li className="hover:underline cursor-pointer">
             <Link href={"/about"}>About</Link>
           </li>
+          <li className="hover:underline cursor-pointer">
+            <Link href={"/products"}>Products</Link>
+          </li>
           <li className="hover:underline cursor-pointer relative group">
             <Link href={"/contact"}> Contact</Link>
           </li>
