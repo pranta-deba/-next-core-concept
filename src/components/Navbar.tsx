@@ -1,19 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Navbar = () => {
   const router = useRouter();
-  const isLoggedIn = false;
+  const pathname = usePathname();
+
+
+  const user = {
+    email: "example@gmail.com",
+    role: "user",
+  };
 
   const handleNavigation = () => {
-    if (isLoggedIn) {
-      router.push("/dashboard");
+    if (user && user.role === "user") {
+      router.push("/user-dashboard");
+    } else if (user && user.role === "admin") {
+      router.push("/admin-dashboard");
     } else {
       router.push("/");
     }
   };
+
+  // dashboard open to normal navbar hidden
+  if (pathname.includes("dashboard")) {
+    return <></>;
+  }
 
   return (
     <div className="px-3 py-5 bg-orange-700 text-white">
@@ -39,7 +52,6 @@ const Navbar = () => {
               className="hover:underline cursor-pointer relative group"
               onClick={handleNavigation}
             >
-              {" "}
               Dashboard
             </button>
           </li>
