@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const user = {
     email: "example@gmail.com",
-    role: "user",
+    role: "admin",
   };
 
   const handleNavigation = () => {
