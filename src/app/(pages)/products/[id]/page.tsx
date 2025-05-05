@@ -5,11 +5,15 @@ interface Props {
   params: { id: string };
 }
 
+export const getProduct = async (id: string) => {
+  const response = await fetch(`https://dummyjson.com/products/${id}`);
+  const data = await response.json();
+  return data;
+};
+
 const ProductDetails = async ({ params }: Props) => {
   const { id } = await params;
-
-  const res = await fetch(`https://dummyjson.com/products/${id}`);
-  const product = await res.json();
+  const product = await getProduct(id);
 
   if (!product) {
     return (

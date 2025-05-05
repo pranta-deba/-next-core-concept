@@ -2,9 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+export const getProducts = async () => {
+  const response = await fetch("https://dummyjson.com/products");
+  const data = await response.json();
+  return data;
+};
+
 const ProductsPage = async () => {
-  const res = await fetch(`https://dummyjson.com/products`);
-  const { products } = await res.json();
+  const { products } = await getProducts();
 
   return (
     <div className="p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
