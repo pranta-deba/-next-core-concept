@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+
 
 export async function GET() {
   const data = {
@@ -9,9 +9,11 @@ export async function GET() {
 
   return Response.json({ data });
 }
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   const product = await req.json();
 
   console.log(product);
   return Response.json({});
 }
+
+
