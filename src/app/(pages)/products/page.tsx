@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,6 +7,11 @@ export const getProducts = async () => {
   const response = await fetch("https://dummyjson.com/products");
   const data = await response.json();
   return data;
+};
+
+export const metadata: Metadata = {
+  title: "All Product",
+  description: "Loading JSON placeholder data",
 };
 
 const ProductsPage = async () => {

@@ -1,9 +1,14 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import React from "react";
 
-interface Props {
+type TProductDetailsProps = {
   params: { id: string };
-}
+};
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
 
 export const getProduct = async (id: string) => {
   const response = await fetch(`https://dummyjson.com/products/${id}`);
@@ -11,7 +16,19 @@ export const getProduct = async (id: string) => {
   return data;
 };
 
-const ProductDetails = async ({ params }: Props) => {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  // read route params
+  const { id } = await params;
+
+  // fetch data
+  const product = await getProduct(id);
+  return {
+    title: product.title,
+    description: product.description,
+  };
+}
+
+const ProductDetails = async ({ params }: TProductDetailsProps) => {
   const { id } = await params;
   const product = await getProduct(id);
 
