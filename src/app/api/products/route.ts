@@ -11,6 +11,7 @@ export async function GET() {
 }
 export async function POST(req: NextRequest) {
   const data = {
+    data: req.body,
     success: true,
     message: "Data created successfully",
     status: 200,
