@@ -10,12 +10,8 @@ export async function GET() {
   return Response.json({ data });
 }
 export async function POST(req: NextRequest) {
-  const data = {
-    data: req.body,
-    success: true,
-    message: "Data created successfully",
-    status: 200,
-  };
+  const product = await req.json();
 
-  return Response.json({ data });
+  console.log(product);
+  return Response.json({});
 }
