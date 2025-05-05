@@ -1,13 +1,14 @@
-
+import dbConnect from "@/lib/dbConnect";
 
 export async function GET() {
-  const data = {
+  const data = (await dbConnect("products")).find({}).toArray();
+
+  return Response.json({
+    data: data,
     success: true,
     message: "Data fetched successfully",
     status: 200,
-  };
-
-  return Response.json({ data });
+  });
 }
 export async function POST(req: Request) {
   const product = await req.json();
@@ -15,5 +16,3 @@ export async function POST(req: Request) {
   console.log(product);
   return Response.json({});
 }
-
-
