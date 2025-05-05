@@ -28,6 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+
+
 const ProductDetails = async ({ params }: TProductDetailsProps) => {
   const { id } = await params;
   const product = await getProduct(id);
