@@ -11,9 +11,9 @@ type Props = {
 };
 
 export const getProduct = async (id: string) => {
-  const response = await fetch(`https://dummyjson.com/products/${id}`);
+  const response = await fetch(`http://localhost:3000/api/products/${id}`);
   const data = await response.json();
-  return data;
+  return data.data;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -27,8 +27,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: product.description,
   };
 }
-
-
 
 const ProductDetails = async ({ params }: TProductDetailsProps) => {
   const { id } = await params;

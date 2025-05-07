@@ -46,7 +46,7 @@ const ProductsPage = async () => {
               </span>
             </div>
             <Link
-              href={`/products/${ele.id}`}
+              href={`/products/${ele._id}`}
               className="block mt-2 text-center bg-orange-700 hover:bg-orange-700 text-white py-1.5 rounded-lg font-semibold"
             >
               View Details
@@ -59,6 +59,7 @@ const ProductsPage = async () => {
 };
 
 export type TProduct = {
+  _id?: string;
   id: number;
   title: string;
   description: string;
